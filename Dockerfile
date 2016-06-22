@@ -24,6 +24,7 @@ RUN apt-get --quiet update && \
                         ca-certificates \
                         supervisor \
                         openssl \
+                        software-properties-common \
     && apt-get clean -y \
     && apt-get autoclean -y \
     && apt-get autoremove -y \
