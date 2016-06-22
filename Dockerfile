@@ -22,7 +22,7 @@ RUN apt-get --quiet update && \
                         apt-transport-https \
                         ca-certificates \
                         supervisor \
-                        openssl
+                        openssl \
     && apt-get clean -y \
     && apt-get autoclean -y \
     && apt-get autoremove -y \
