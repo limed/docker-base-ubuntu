@@ -17,6 +17,7 @@ RUN apt-get --quiet update && \
                         tar \
                         python \
                         python-pip \
+                        python-software-properties \
                         curl \
                         wget \
                         apt-transport-https \
