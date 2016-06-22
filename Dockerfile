@@ -10,6 +10,12 @@ ENV DEBIAN_FRONTEND="noninteractive" \
 # Add the trusty-proposed repo
 RUN echo "deb http://archive.ubuntu.com/ubuntu/ trusty-proposed restricted main multiverse universe" >> /etc/apt/sources.list
 
+# enable multiverse on all repos
+RUN sed -i "/^# deb.*multiverse/ s/^# //" /etc/apt/sources.list
+
+# Set locale
+RUN 'en_US.UTF-8 UTF-8' >> /etc/locale.gen
+
 # Install some utilities
 RUN apt-get --quiet update && \
     apt-get install -qy vim \
