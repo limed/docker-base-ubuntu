@@ -41,3 +41,4 @@ RUN apt-get --quiet update && \
 
 ADD files/vimrc /root/.vimrc
 RUN chown root:root /root/.vimrc
+RUN mkdir -p /data
