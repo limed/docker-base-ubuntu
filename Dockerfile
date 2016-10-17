@@ -1,5 +1,5 @@
 # vim: set filetype=dockerfile
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER Ed Lim <limed@sudoers.org>
 
 ENV DEBIAN_FRONTEND="noninteractive" \
