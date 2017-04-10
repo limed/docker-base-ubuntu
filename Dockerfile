@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND="noninteractive" \
     LANGUAGE="en_US.UTF-8"
 
 # Add the trusty-proposed repo
-RUN echo "deb http://archive.ubuntu.com/ubuntu/ trusty-proposed restricted main multiverse universe" >> /etc/apt/sources.list
+RUN echo "deb http://archive.ubuntu.com/ubuntu/ xenial-proposed restricted main multiverse universe" >> /etc/apt/sources.list
 
 # enable multiverse on all repos
 RUN sed -i "/^# deb.*multiverse/ s/^# //" /etc/apt/sources.list
