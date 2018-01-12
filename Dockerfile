@@ -7,31 +7,25 @@ ENV DEBIAN_FRONTEND="noninteractive" \
     LC_ALL="en_US.UTF-8" \
     LANGUAGE="en_US.UTF-8"
 
-# Add the trusty-proposed repo
-RUN echo "deb http://archive.ubuntu.com/ubuntu/ xenial-proposed restricted main multiverse universe" >> /etc/apt/sources.list
-
-# enable multiverse on all repos
-RUN sed -i "/^# deb.*multiverse/ s/^# //" /etc/apt/sources.list
-
-# Set locale
-RUN echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen && \
-    locale-gen 'en_US.UTF-8'
-
-# Install some utilities
-RUN apt-get --quiet update && \
-    apt-get install -qy vim \
-                        bzip2 \
-                        tar \
-                        python \
-                        python-pip \
-                        python-software-properties \
-                        curl \
-                        wget \
-                        apt-transport-https \
-                        ca-certificates \
-                        supervisor \
-                        openssl \
-                        software-properties-common \
+# Does the following:
+# - Add the trusty-proposed repo
+# - enable multiverse on all repos
+# - Install some utilities
+# - Remove stuff
+RUN echo "deb http://archive.ubuntu.com/ubuntu/ xenial-proposed restricted main multiverse universe" >> /etc/apt/sources.list \
+    && sed -i "/^# deb.*multiverse/ s/^# //" /etc/apt/sources.list \
+    && apt-get --quiet update \
+    && apt-get install --no-install-recommends -qy  bzip2 \
+                            tar \
+                            python \
+                            python-pip \
+                            python-software-properties \
+                            curl \
+                            apt-transport-https \
+                            ca-certificates \
+                            supervisor \
+                            openssl \
+                            software-properties-common \
     && apt-get clean -y \
     && apt-get autoclean -y \
     && apt-get autoremove -y \
